@@ -45,7 +45,7 @@ class EntityAPIHandler extends APIHandler
             $responseInstance = APIRequest::getInstance($this)->getAPIResponse();
             $responseJSON = $responseInstance->getResponseJSON();
             $recordDetails = $responseJSON['data'] ?? $responseJSON['users'] ?? [];
-            if (sizeof($recordDetails) == 0) {
+            if (empty($recordDetails)) {
                 throw new ZCRMException("No record data found for the given ID.", APIConstants::RESPONSECODE_NOT_FOUND);
             }
             self::setRecordProperties($recordDetails[0]);
